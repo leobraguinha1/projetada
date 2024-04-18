@@ -2,7 +2,7 @@
 - Leonardo Braga Esposito (2202430)
 - Matheus Fernandes Martins Batista (2202435)
 
-O App de Desenho para Android é uma ferramenta intuitiva e fácil de usar, inspirada no clássico programa de desenho "Paint", que muitos de nós conhecemos e amamos. Desenvolvido para oferecer uma experiência de desenho simples e agradável em dispositivos Android, este aplicativo permite que usuários de todas as idades liberem sua criatividade, criando obras de arte digitais com facilidade.
+O PintaWeb é uma ferramenta intuitiva e fácil de usar, inspirada no clássico programa de desenho "Paint", que muitos de nós conhecemos e amamos. Desenvolvido para oferecer uma experiência de desenho simples e agradável de forma online, este site permite que usuários de todas as idades liberem sua criatividade, criando obras de arte digitais com facilidade.
 
 **Características Principais**
 - Interface Simples e Intuitiva: Desfrute de uma interface limpa e fácil de navegar, projetada tanto para iniciantes quanto para artistas experientes.
@@ -17,16 +17,15 @@ O App de Desenho para Android é uma ferramenta intuitiva e fácil de usar, insp
 
 - Desfazer/Refazer Ilimitado: Experimente diferentes técnicas sem medo de errar com a funcionalidade de desfazer e refazer ilimitada.
 
-- Modo Noturno: Proteja seus olhos durante sessões de desenho noturnas com o modo noturno.
 
 **Ferramentas usadas:**
-Códigos serão feitos em Java, no Android Studio e usaremos o github para subirmos os códigos e organizar a produção.
-
+Códigos serão feitos em JavaScript, HTML e CSS, tudo feito dentro do VSCode.
 **Funções do grupo:**
-- Programação em Java (Leonardo e Matheus)
-- Desenvolvimento de interface (Larissa)
+- Programação em JavaScript,Html (Leonardo)
+- Desenvolvimento de interface (CSS) (Leonardo)
 
 Planos Futuros:
 - Adicionar uma máscara aos objetos;
 - Compartilhamento linkado a redes socias;
 - Digitalização de imagem da galeria, possibilitando o artista a passar sua arte do papel para o digital
+- adicionar ferramentas mais elaboradas como: Ferramentas de Forma, Desfazer/Refazer Ilimitado, Importação e Exportação.
