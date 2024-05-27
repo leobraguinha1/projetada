@@ -1,67 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
+const canvas = document.querySelector("canvas")
+const ctx = canvas.getContext("2d")
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+const inputColor = document.querySelector(".input__color")
+const tools = document.querySelectorAll(".button__tool")
+const sizeButtons = document.querySelectorAll(".button__size")
+const buttonClear = document.querySelector(".button__clear")
 
-    <link rel="stylesheet"
-        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,400,0,0" />
+let brushSize = 20
 
-    <link rel="stylesheet" href="./style.css">
-    <title>PintaWeb</title>
-</head>
+let isPainting = false
 
-<body>
+let activeTool = "brush"
 
-    <section class="container">
-        <canvas width="1500" height="900"></canvas>
+inputColor.addEventListener("change", ({ target }) => {
+    ctx.fillStyle = target.value
+})
 
-        <div>
-            <section class="tool-box">
-                <button class="button__tool active" data-action="brush">
-                    <span class="material-symbols-outlined">brush</span>
-                </button>
+canvas.addEventListener("mousedown", ({ clientX, clientY }) => {
+    isPainting = true
 
-                <button class="button__tool" data-action="rubber">
-                    <span class="material-symbols-outlined">ink_eraser</span>
-                </button>
+    if (activeTool == "brush") {
+        draw(clientX, clientY)
+    }
 
-                <button class="button__tool" data-action="color">
-                    <input type="color" class="input__color">
-                </button>
-            </section>
+    if (activeTool == "rubber") {
+        erase(clientX, clientY)
+    }
+})
 
-            <div>
-                <section class="tool-box">
-                    <button class="button__size" data-size="5">
-                        <span class="stroke"></span>
-                    </button>
+canvas.addEventListener("mousemove", ({ clientX, clientY }) => {
+    if (isPainting) {
+        if (activeTool == "brush") {
+            draw(clientX, clientY)
+        }
 
-                    <button class="button__size" data-size="10">
-                        <span class="stroke"></span>
-                    </button>
+        if (activeTool == "rubber") {
+            erase(clientX, clientY)
+        }
+    }
+})
 
-                    <button class="button__size active" data-size="20">
-                        <span class="stroke"></span>
-                    </button>
+canvas.addEventListener("mouseup", ({ clientX, clientY }) => {
+    isPainting = false
+})
 
-                    <button class="button__size" data-size="30">
-                        <span class="stroke"></span>
-                    </button>
-                </section>
+const draw = (x, y) => {
+    ctx.globalCompositeOperation = "source-over"
+    ctx.beginPath()
+    ctx.arc(
+        x - canvas.offsetLeft,
+        y - canvas.offsetTop,
+        brushSize / 2,
+        0,
+        2 * Math.PI
+    )
+    ctx.fill()
+}
 
-                <section class="tool-box">
-                    <button class="button__tool button__clear">
-                        <span class="material-symbols-outlined">delete</span>
-                    </button>
+const erase = (x, y) => {
+    ctx.globalCompositeOperation = "destination-out"
+    ctx.beginPath()
+    ctx.arc(
+        x - canvas.offsetLeft,
+        y - canvas.offsetTop,
+        brushSize / 2,
+        0,
+        2 * Math.PI
+    )
+    ctx.fill()
+}
 
-                </section>
-            </div>
+const selectTool = ({ target }) => {
+    const selectedTool = target.closest("button")
+    const action = selectedTool.getAttribute("data-action")
 
-        </div>
-    </section>
-    <script src="./script.js"></script>
-</body>
+    if (action) {
+        tools.forEach((tool) => tool.classList.remove("active"))
+        selectedTool.classList.add("active")
+        activeTool = action
+    }
+}
 
-</html>
+const selectSize = ({ target }) => {
+    const selectedTool = target.closest("button")
+    const size = selectedTool.getAttribute("data-size")
+
+    sizeButtons.forEach((tool) => tool.classList.remove("active"))
+    selectedTool.classList.add("active")
+    brushSize = size
+}
+
+tools.forEach((tool) => {
+    tool.addEventListener("click", selectTool)
+})
+
+sizeButtons.forEach((button) => {
+    button.addEventListener("click", selectSize)
+})
+
+buttonClear.addEventListener("click", () => {
+    ctx.clearRect(0, 0, canvas.width, canvas.height)
+})
