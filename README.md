@@ -21,8 +21,8 @@ O PintaWeb é uma ferramenta intuitiva e fácil de usar, inspirada no clássico 
 **Ferramentas usadas:**
 Códigos serão feitos em JavaScript, HTML e CSS, tudo feito dentro do VSCode.
 **Funções do grupo:**
-- Programação em JavaScript,Html (Leonardo)
-- Desenvolvimento de interface (CSS) (Leonardo)
+- Programação em JavaScript,Html
+- Desenvolvimento de interface (CSS)
 
 Planos Futuros:
 - Adicionar uma máscara aos objetos;
